@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <h:head>
     <title>JSF Hello World</title>
@@ -11,7 +12,20 @@
 <h:body>
     <h1>Employees</h1>
 
-    #{employeesController.employees}
+    <h:dataTable value="#{employeesController.employees}" var="employee">
+        <h:column>
+            <f:facet name="header">
+                Id
+            </f:facet>
+            #{employee.id}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                Employee name
+            </f:facet>
+            #{employee.name}
+        </h:column>
+    </h:dataTable>
 
 </h:body>
 </html>
