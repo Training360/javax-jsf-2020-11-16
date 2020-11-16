@@ -10,7 +10,7 @@ import javax.faces.context.FacesContext;
 import java.time.LocalDateTime;
 
 @Component
-@SessionScope
+@RequestScope
 public class HelloController {
 
     private String message = "Type your name!";
@@ -19,6 +19,13 @@ public class HelloController {
 
     public String sayHello() {
         message = "Hello " + name + " " + LocalDateTime.now();
+
+        FacesContext.getCurrentInstance()
+                .getExternalContext()
+                .getFlash()
+                .put("successMessage",
+                        String.format("Hello %s!", name));
+
         name = "";
         return "/hello.xhtml?faces-redirect=true";
     }
