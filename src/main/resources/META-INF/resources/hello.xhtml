@@ -10,5 +10,12 @@
     <h1>JSF Hello World</h1>
 
     #{helloController.message}
+
+    <h:form>
+        <h:inputText value="#{helloController.name}"></h:inputText>
+        <h:commandButton value="Say hello"
+                         action="#{helloController.sayHello()}">
+        </h:commandButton>
+    </h:form>
 </h:body>
 </html>
