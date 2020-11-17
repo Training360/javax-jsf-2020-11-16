@@ -37,9 +37,9 @@ public class UpdateEmployeeControllerTest {
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setId(888L);
         employeeDto.setName("Test Name");
-        when(employeeService.findEmployeeById(eq(1L))).thenReturn(employeeDto);
+        when(employeeService.findEmployeeById(eq(888L))).thenReturn(employeeDto);
         // When - pont mint a Faclet
-        updateEmployeeController.setId(1);
+        updateEmployeeController.setId(((888L)));
         updateEmployeeController.findEmployeeById();
         // Then
         // Faceletet szimulálok
