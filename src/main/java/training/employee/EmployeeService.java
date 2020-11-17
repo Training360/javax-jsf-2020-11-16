@@ -22,10 +22,10 @@ public class EmployeeService {
                 .collect(Collectors.toList());
     }
 
-    @Transactional
     public void createEmployee(CreateEmployeeCommand command) {
         Employee employee = new Employee();
         employee.setName(command.getName());
+        // Save tranzakciot indit
         employeeRepository.save(employee);
     }
 
@@ -40,6 +40,7 @@ public class EmployeeService {
     }
 
     public void deleteEmployee(DeleteEmployeeCommand command) {
+        // Delete tranzakciot indit
         employeeRepository.deleteById(command.getId());
     }
 }
