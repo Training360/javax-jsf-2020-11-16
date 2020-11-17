@@ -13,12 +13,15 @@ public class UpdateEmployeeController {
 
     private final EmployeeService employeeService;
 
+    private final MessageContext messageContext;
+
     private long id;
 
     private ModifyEmployeeCommand modifyEmployeeCommand = new ModifyEmployeeCommand();
 
-    public UpdateEmployeeController(EmployeeService employeeService) {
+    public UpdateEmployeeController(EmployeeService employeeService, MessageContext messageContext) {
         this.employeeService = employeeService;
+        this.messageContext = messageContext;
     }
 
     public void findEmployeeById() {
@@ -29,19 +32,9 @@ public class UpdateEmployeeController {
     }
 
     public String modifyEmployee() {
+        modifyEmployeeCommand.setName(modifyEmployeeCommand.getName().toUpperCase());
         employeeService.modifyEmployee(modifyEmployeeCommand);
-
-        FacesContext
-                .getCurrentInstance()
-                .addMessage(null, new FacesMessage("Employee has been modified: " + modifyEmployeeCommand.getName()));
-// Redirect after post miatt
-        FacesContext
-                .getCurrentInstance()
-                .getExternalContext()
-                .getFlash()
-                .setKeepMessages(true);
-
-
+        messageContext.addMessage("Employee has been modified: " + modifyEmployeeCommand.getName());
         return "employees.xhtml?faces-redirect=true";
     }
 
