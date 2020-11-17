@@ -8,4 +8,6 @@ public class ModifyEmployeeCommand {
     private Long id;
 
     private String name;
+
+    private String favouriteLanguage;
 }

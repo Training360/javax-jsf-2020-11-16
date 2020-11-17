@@ -12,8 +12,11 @@ public class EmployeeDto {
 
     private String name;
 
+    private String favouriteLanguage;
+
     public EmployeeDto(Employee employee) {
         id = employee.getId();
         name = employee.getName();
+        favouriteLanguage = employee.getFavouriteLanguage();
     }
 }

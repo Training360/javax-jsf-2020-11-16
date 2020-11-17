@@ -10,4 +10,9 @@
                  relativeToChangelogFile="true" />
     </changeSet>
 
+    <changeSet id="lang" author="vicziani">
+        <sqlFile path="alter_employee.sql"
+                 relativeToChangelogFile="true" />
+    </changeSet>
+
 </databaseChangeLog>

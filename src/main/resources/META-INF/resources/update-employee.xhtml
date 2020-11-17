@@ -21,6 +21,7 @@
         <h:inputHidden
                 value="#{updateEmployeeController.modifyEmployeeCommand.id}" />
         <h:inputText id="nameInput" value="#{updateEmployeeController.modifyEmployeeCommand.name}"></h:inputText>
+        <h:inputText id="langInput" value="#{updateEmployeeController.modifyEmployeeCommand.favouriteLanguage}"></h:inputText>
         <h:commandButton id="modifyCommand" value="Modify employee"
                          action="#{updateEmployeeController.modifyEmployee()}">
         </h:commandButton>

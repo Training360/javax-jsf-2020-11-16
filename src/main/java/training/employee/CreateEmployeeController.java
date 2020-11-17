@@ -3,8 +3,10 @@ package training.employee;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import java.util.List;
 
 @Component
 @RequestScope
@@ -14,12 +16,19 @@ public class CreateEmployeeController {
 
     private CreateEmployeeCommand createEmployeeCommand = new CreateEmployeeCommand();
 
+    private List<String> availableLanguages;
+
     public CreateEmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
     public CreateEmployeeCommand getCreateEmployeeCommand() {
         return createEmployeeCommand;
+    }
+
+    @PostConstruct
+    public void loadLanguages() {
+        availableLanguages = employeeService.listAvailableLanguages();
     }
 
     public String createEmployee() {
@@ -37,5 +46,9 @@ public class CreateEmployeeController {
 
         // Redirect after post tervezési minta - ide átirányítás kell
         return "employees.xhtml?faces-redirect=true";
+    }
+
+    public List<String> getAvailableLanguages() {
+        return availableLanguages;
     }
 }

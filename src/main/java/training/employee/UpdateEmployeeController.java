@@ -29,6 +29,7 @@ public class UpdateEmployeeController {
         modifyEmployeeCommand = new ModifyEmployeeCommand();
         modifyEmployeeCommand.setId(id);
         modifyEmployeeCommand.setName(employee.getName());
+        modifyEmployeeCommand.setFavouriteLanguage(employee.getFavouriteLanguage());
     }
 
     public String modifyEmployee() {

@@ -14,6 +14,11 @@
 
     <h:form id="createForm">
         <h:inputText id="nameInput" value="#{createEmployeeController.createEmployeeCommand.name}"></h:inputText>
+
+        <h:selectOneMenu value="#{createEmployeeController.createEmployeeCommand.favouriteLanguage}" >
+            <f:selectItems value="#{createEmployeeController.availableLanguages}" />
+        </h:selectOneMenu>
+
         <h:commandButton id="createButton" value="Create employee"
                          action="#{createEmployeeController.createEmployee()}">
         </h:commandButton>

@@ -26,6 +26,7 @@ public class EmployeeService {
     public void createEmployee(CreateEmployeeCommand command) {
         Employee employee = new Employee();
         employee.setName(command.getName());
+        employee.setFavouriteLanguage(command.getFavouriteLanguage());
         // Save tranzakciot indit
         employeeRepository.save(employee);
     }
@@ -38,10 +39,16 @@ public class EmployeeService {
     public void modifyEmployee(ModifyEmployeeCommand command) {
         Employee employee = employeeRepository.getOne(command.getId());
         employee.setName(command.getName());
+        employee.setFavouriteLanguage(command.getFavouriteLanguage());
     }
 
     public void deleteEmployee(DeleteEmployeeCommand command) {
         // Delete tranzakciot indit
         employeeRepository.deleteById(command.getId());
+    }
+
+    public List<String> listAvailableLanguages() {
+        // Adatbázisból jön
+        return List.of("Java", "Python", "JavaScript", "C#");
     }
 }
