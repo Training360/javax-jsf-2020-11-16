@@ -32,6 +32,14 @@ public class CreateEmployeeController {
     }
 
     public String createEmployee() {
+
+        if (employeeService.isEmployeeWithName(createEmployeeCommand.getName())) {
+            FacesContext
+                    .getCurrentInstance()
+                    .addMessage(null, new FacesMessage("Employee already exists"));
+            return null;
+        }
+
         employeeService.createEmployee(createEmployeeCommand);
 
         FacesContext

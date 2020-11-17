@@ -51,4 +51,9 @@ public class EmployeeService {
         // Adatbázisból jön
         return List.of("Java", "Python", "JavaScript", "C#");
     }
+
+    public boolean isEmployeeWithName(String name) {
+        List<Employee> employees = employeeRepository.findByName(name);
+        return !employees.isEmpty();
+    }
 }

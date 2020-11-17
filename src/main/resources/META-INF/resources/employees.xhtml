@@ -5,12 +5,17 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+<f:view locale="#{languageController.locale}">
 <h:head>
     <title>JSF Hello World</title>
 </h:head>
 <h:body>
-    <h1>Employees</h1>
+    <h1>#{msgs['title']}</h1>
+
+    <p:clock/>
 
     <h:messages />
 
@@ -58,7 +63,15 @@
     </h:dataTable>
     </h:form>
 
+    <ui:repeat value="#{employeesController.employees}" var="employee">
+        <h:panelGroup id="employee-div" layout="block">
+            <h2>#{employee.name}</h2>
+            <p>#{employee.favouriteLanguage}</p>
+        </h:panelGroup>
+    </ui:repeat>
+
     <h:link value="Create employee" outcome="create-employee.xhtml" />
 
 </h:body>
+</f:view>
 </html>
