@@ -14,6 +14,17 @@
 
     <h:messages />
 
+    <f:metadata>
+        <f:viewParam id="query" name="query"
+                     value="#{employeesController.employeesQuery.nameQuery}" />
+        <f:viewAction action="#{employeesController.initEmployees}" />
+    </f:metadata>
+
+    <form action="employees.xhtml">
+        <input name="query" value="#{employeesController.employeesQuery.nameQuery}" />
+        <input type="submit" value="Search" />
+    </form>
+
     <h:form>
     <h:dataTable value="#{employeesController.employees}" var="employee">
         <h:column>

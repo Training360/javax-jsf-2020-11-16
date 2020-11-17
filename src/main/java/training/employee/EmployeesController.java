@@ -16,13 +16,14 @@ public class EmployeesController {
 
     private List<EmployeeDto> employees;
 
+    private EmployeesQuery employeesQuery = new EmployeesQuery();
+
     public EmployeesController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
-    @PostConstruct
-    public void init() {
-        employees = employeeService.listEmployees();
+    public void initEmployees() {
+        employees = employeeService.listEmployees(employeesQuery);
     }
 
     public List<EmployeeDto> getEmployees() {
@@ -45,5 +46,13 @@ public class EmployeesController {
                 .setKeepMessages(true);
 
         return "employees.xhtml?faces-redirect=true";
+    }
+
+    public EmployeesQuery getEmployeesQuery() {
+        return employeesQuery;
+    }
+
+    public void setEmployeesQuery(EmployeesQuery employeesQuery) {
+        this.employeesQuery = employeesQuery;
     }
 }

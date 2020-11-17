@@ -14,9 +14,10 @@ public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
-    public List<EmployeeDto> listEmployees() {
+    public List<EmployeeDto> listEmployees(EmployeesQuery employeesQuery) {
         return employeeRepository
-                .findAll(Sort.by("name"))
+                //.findAll(Sort.by("name"))
+                .findAllByNameLikeOrderByName(employeesQuery.getNameQuery() == null ? "%" : employeesQuery.getNameQuery() + "%")
                 .stream()
                 .map(EmployeeDto::new)
                 .collect(Collectors.toList());
