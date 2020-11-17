@@ -22,6 +22,7 @@ public class EmployeesController {
         this.employeeService = employeeService;
     }
 
+    @PostConstruct
     public void initEmployees() {
         employees = employeeService.listEmployees(employeesQuery);
     }
