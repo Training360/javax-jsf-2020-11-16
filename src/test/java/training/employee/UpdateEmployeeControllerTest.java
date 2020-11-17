@@ -35,8 +35,8 @@ public class UpdateEmployeeControllerTest {
     void testGetEmployeeById() {
         // Given
         EmployeeDto employeeDto = new EmployeeDto();
-        employeeDto.setId(1L);
-        employeeDto.setName("John Doe");
+        employeeDto.setId(888L);
+        employeeDto.setName("Test Name");
         when(employeeService.findEmployeeById(eq(1L))).thenReturn(employeeDto);
         // When - pont mint a Faclet
         updateEmployeeController.setId(1);
@@ -46,18 +46,18 @@ public class UpdateEmployeeControllerTest {
 //        System.out.println(updateEmployeeController.getModifyEmployeeCommand().getId());
 //        System.out.println(updateEmployeeController.getModifyEmployeeCommand().getName());
 
-        assertEquals(1L, updateEmployeeController.getModifyEmployeeCommand().getId());
-        assertEquals("John Doe", updateEmployeeController.getModifyEmployeeCommand().getName());
+        assertEquals(888L, updateEmployeeController.getModifyEmployeeCommand().getId());
+        assertEquals("Test Name", updateEmployeeController.getModifyEmployeeCommand().getName());
     }
 
     @Test
     void testModifyEmployee() {
         ModifyEmployeeCommand command = new ModifyEmployeeCommand();
         command.setId(5L);
-        command.setName("Jack Smith");
+        command.setName("          Test Name              ");
         updateEmployeeController.setModifyEmployeeCommand(command);
         updateEmployeeController.modifyEmployee();
 
-        verify(employeeService).modifyEmployee(argThat(c -> c.getName().equals("JACK SMITH")));
+        verify(employeeService).modifyEmployee(argThat(c -> c.getName().equals("Test Name")));
     }
 }

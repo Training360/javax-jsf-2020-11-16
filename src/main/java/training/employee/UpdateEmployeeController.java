@@ -32,7 +32,7 @@ public class UpdateEmployeeController {
     }
 
     public String modifyEmployee() {
-        modifyEmployeeCommand.setName(modifyEmployeeCommand.getName().toUpperCase());
+        modifyEmployeeCommand.setName(modifyEmployeeCommand.getName().trim());
         employeeService.modifyEmployee(modifyEmployeeCommand);
         messageContext.addMessage("Employee has been modified: " + modifyEmployeeCommand.getName());
         return "employees.xhtml?faces-redirect=true";
