@@ -12,8 +12,14 @@
 <h:body>
     <h1>Create employee</h1>
 
+    <h:messages />
+
     <h:form id="createForm">
         <h:inputText id="nameInput" value="#{createEmployeeController.createEmployeeCommand.name}"></h:inputText>
+
+        <h:inputText id="phoneInput" value="#{createEmployeeController.createEmployeeCommand.phone}">
+
+        </h:inputText>
 
         <h:selectOneMenu value="#{createEmployeeController.createEmployeeCommand.favouriteLanguage}" >
             <f:selectItems value="#{createEmployeeController.availableLanguages}" />
