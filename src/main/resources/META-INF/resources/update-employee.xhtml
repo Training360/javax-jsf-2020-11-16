@@ -17,11 +17,11 @@
         <f:viewAction action="#{updateEmployeeController.findEmployeeById}"/>
     </f:metadata>
 
-    <h:form>
+    <h:form id="modifyForm">
         <h:inputHidden
                 value="#{updateEmployeeController.modifyEmployeeCommand.id}" />
-        <h:inputText value="#{updateEmployeeController.modifyEmployeeCommand.name}"></h:inputText>
-        <h:commandButton value="Modify employee"
+        <h:inputText id="nameInput" value="#{updateEmployeeController.modifyEmployeeCommand.name}"></h:inputText>
+        <h:commandButton id="modifyCommand" value="Modify employee"
                          action="#{updateEmployeeController.modifyEmployee()}">
         </h:commandButton>
     </h:form>

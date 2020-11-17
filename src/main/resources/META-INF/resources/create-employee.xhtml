@@ -12,9 +12,9 @@
 <h:body>
     <h1>Create employee</h1>
 
-    <h:form>
-        <h:inputText value="#{createEmployeeController.createEmployeeCommand.name}"></h:inputText>
-        <h:commandButton value="Create employee"
+    <h:form id="createForm">
+        <h:inputText id="nameInput" value="#{createEmployeeController.createEmployeeCommand.name}"></h:inputText>
+        <h:commandButton id="createButton" value="Create employee"
                          action="#{createEmployeeController.createEmployee()}">
         </h:commandButton>
     </h:form>
